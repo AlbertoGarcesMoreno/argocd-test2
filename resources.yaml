@@ -40,30 +40,9 @@ spec:
             periodSeconds: 10
             failureThreshold: 3
           volumeMounts:
-            - name: config-volume
-              mountPath: /data-env-configmap
-            - name: secret-volume
-              mountPath: /data-env-secret
             - name: common-volume
               mountPath: /data-common-configmap
-          env:
-            - name: VAR_1
-              valueFrom:
-                configMapKeyRef:
-                  name: example-configmap-1
-                  key: env_var_1
-            - name: VAR_SECRET_USERNAME_1
-              valueFrom:
-                secretKeyRef:
-                  name: example-secret-1
-                  key: username1
       volumes:
-        - name: config-volume
-          configMap:
-            name: example-configmap-1
-        - name: secret-volume
-          secret:
-            secretName: example-secret-1
         - name: common-volume
           configMap:
             name: common-configmap-1
